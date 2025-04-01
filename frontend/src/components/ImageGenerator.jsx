@@ -59,6 +59,12 @@ const ImageGenerator = () => {
     }
   };
 
+  const handleDeleteHistory = (index) => {
+    const updatedHistory = history.filter((_, i) => i !== index);
+    setHistory(updatedHistory);
+    localStorage.setItem("logoHistory", JSON.stringify(updatedHistory));
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-gray-900 to-black text-white flex flex-col items-center p-6">
       <h1 className="text-5xl font-extrabold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-blue-500">
@@ -125,12 +131,12 @@ const ImageGenerator = () => {
             {history.map((entry, index) => (
               <div key={index} className="bg-gray-800 p-6 rounded-lg shadow-lg">
                 <p className="text-sm text-gray-400 mb-2">
-                  {/* <strong>Prompt:</strong> {entry.prompt} */}
+                  <strong>Prompt:</strong> {entry.prompt}
                 </p>
                 <p className="text-sm text-gray-400 mb-4">
                   <strong>Generated on:</strong> {new Date(entry.timestamp).toLocaleString()}
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                   {entry.images.map((url, imgIndex) => (
                     <img
                       key={imgIndex}
@@ -140,6 +146,12 @@ const ImageGenerator = () => {
                     />
                   ))}
                 </div>
+                <button
+                  onClick={() => handleDeleteHistory(index)}
+                  className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+                >
+                  Delete Entry
+                </button>
               </div>
             ))}
           </div>
