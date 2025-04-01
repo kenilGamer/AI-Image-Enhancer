@@ -18,7 +18,7 @@ const ImageGenerator = () => {
     setLoading(true);
     setError("");
     try {
-      const response = await axios.post("https://ai-image-enhancer-54cs.onrender.com/api/generate-image", {
+      const response = await axios.post("https://ai-image-enhancer-8rmp.onrender.com/api/generate-image", {
         prompt,
         n: 3,
         size: "1024x1024",
