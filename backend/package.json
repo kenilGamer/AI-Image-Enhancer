@@ -1,5 +1,22 @@
 {
   "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "name": "openai-chatgpt-api",
+  "version": "1.0.0",
+  "description": "A simple Express server to interact with OpenAI's ChatGPT API.",
+  "main": "server.js",
+  "author": "Your Name",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
